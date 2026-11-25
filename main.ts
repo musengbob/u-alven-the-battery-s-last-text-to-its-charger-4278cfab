@@ -5,8 +5,9 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-const LINE =
-  "i stayed at 1% for three hours so you could finish that reel. that\u2019s love. anyway, i\u2019m done \u2014 tell the charger the power bank was better in bed.";
+function buildEntryLine(): string {
+  return "i stayed at 1% for three hours so you could finish that reel. that\u2019s love. anyway, i\u2019m done \u2014 tell the charger the power bank was better in bed.";
+}
 
 const MAX_CHARS = 200;
 
@@ -19,6 +20,7 @@ function resolveOutputPath(): string {
 }
 
 function main(): void {
+  const LINE = buildEntryLine();
   const outPath = resolveOutputPath();
   mkdirSync(join(outPath, ".."), { recursive: true });
   writeFileSync(outPath, LINE, "utf8");
